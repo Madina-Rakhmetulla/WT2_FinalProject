@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Categories — Online Library</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body>
+<header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="index.html" aria-label="Home">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span>Online Library</span>
+        </a>
+        <label for="nav-toggle" class="hamb" aria-label="Toggle navigation"><span></span><span></span><span></span></label>
+        <input type="checkbox" id="nav-toggle" aria-hidden="true">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="catalog.html">Catalog</a>
+          <a href="categories.html" class="active">Categories</a>
+          <a href="membership.html">Membership</a>
+          <a href="about.html">About</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="account.html">Account</a>
+        
+          <button id="themeToggle" class="btn btn-outline-light btn-sm ms-2" type="button">Light mode</button>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container my-5">
+      <h1 class="mb-4">Categories</h1>
+      <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100" style="background:var(--soft);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">HTML</h5>
+              <p class="card-text muted">Structure, semantics, accessibility.</p>
+              <a href="catalog.html" class="btn btn-outline-light btn-sm mt-auto">Browse</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100" style="background:var(--soft);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">CSS</h5>
+              <p class="card-text muted">Layouts, responsive design, effects.</p>
+              <a href="catalog.html" class="btn btn-outline-light btn-sm mt-auto">Browse</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100" style="background:var(--soft);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">UI/UX</h5>
+              <p class="card-text muted">Design systems, patterns, usability.</p>
+              <a href="catalog.html" class="btn btn-outline-light btn-sm mt-auto">Browse</a>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3">
+          <div class="card h-100" style="background:var(--soft);border:1px solid var(--border);color:var(--text);border-radius:var(--radius);">
+            <div class="card-body d-flex flex-column">
+              <h5 class="card-title">Machine Learning</h5>
+              <p class="card-text muted">Foundations, practical ML, projects.</p>
+              <a href="catalog.html" class="btn btn-outline-light btn-sm mt-auto">Browse</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+<section id="task4-tags" class="container my-5">
+  <h2>My Shelf Tags</h2>
+  <ul id="shelfTags" class="mb-2">
+    <li>Algorithms</li>
+    <li>Product Design</li>
+  </ul>
+  <div class="d-flex gap-2">
+    <button id="addTagBtn" class="btn">Add Tag</button>
+    <button id="removeTagBtn" class="btn">Remove Last Tag</button>
+  </div>
+  <p class="text-muted mt-2">Add or remove tags to organize your library.</p>
+</section>
+
+<section class="container my-5" id="db-authors">
+  <h2>Authors (from Database)</h2>
+  <p class="text-secondary">Loaded from MongoDB via <code>GET /api/authors</code>.</p>
+  <div class="d-flex gap-2 flex-wrap">
+    <button id="refreshAuthorsBtn" class="btn btn-outline-light btn-sm" type="button">Refresh</button>
+    <a class="btn btn-outline-info btn-sm" href="catalog.html" data-admin-only>Admin: Add to catalog</a>
+    <a class="btn btn-outline-secondary btn-sm" href="register.html" data-auth-hidden>Login</a>
+    <a class="btn btn-outline-secondary btn-sm" href="account.html" data-auth-only>Account</a>
+  </div>
+  <div id="authorsGrid" class="row g-3 mt-3"></div>
+  <div id="authorsEmpty" class="text-secondary small mt-2" style="display:none;">No authors yet.</div>
+</section>
+
+</main>
+<footer class="site-footer">
+      <div class="container container-narrow">
+        <p class="muted">© 2025 Online Library — Madina Rakhmetulla</p>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+<a href="contact.html" class="btn btn-primary" style="position:fixed; right:16px; bottom:16px; z-index:1000">Need help?</a>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+  <script src="js/library.js"></script>
+</body>
+</html>

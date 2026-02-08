@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+
+<html data-bs-theme="dark" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+  <title>Catalog — Online Library</title>
+  <link href="css/styles.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container navbar">
+      <a aria-label="Home" class="brand" href="index.html">
+        <span aria-hidden="true" class="brand-logo"></span>
+        <span>Online Library</span>
+      </a>
+      <label aria-label="Toggle navigation" class="hamb"
+        for="nav-toggle"><span></span><span></span><span></span></label>
+      <input aria-hidden="true" id="nav-toggle" type="checkbox" />
+      <nav aria-label="Primary" class="nav-links">
+        <a href="catalog.html">Catalog</a>
+        <a href="categories.html">Categories</a>
+        <a href="membership.html">Membership</a>
+        <a href="about.html">About</a>
+        <a href="faq.html">FAQ</a>
+        <a href="contact.html">Contact</a>
+        <a href="account.html">Account</a>
+
+        <button id="themeToggle" class="btn btn-outline-light btn-sm ms-2" type="button">Light mode</button>
+      </nav>
+    </div>
+  </header>
+  <div class="task6-float" id="task6-float">
+    <div class="task6-title">Search the Catalog</div><input class="form-control" id="catalogSearch" inputmode="text"
+      placeholder="Search books…" /><small class="text-muted d-block mt-1" id="searchMirror"></small>
+  </div>
+  <main class="container" id="main">
+    <div class="d-flex gap-2 mb-3 mt-2">
+      <button id="btnHideGenres" class="btn btn-outline-light btn-sm" type="button">Hide Genres</button>
+      <button id="btnShowGenres" class="btn btn-outline-light btn-sm" type="button">Show Genres</button>
+      <button id="btnToggleGenres" class="btn btn-outline-light btn-sm" type="button">Toggle Genres</button>
+    </div>
+
+
+    <div class="catalog-toolbar">
+      <input id="f-html" type="checkbox" />
+      <label class="filter" for="f-html">HTML</label>
+      <input id="f-css" type="checkbox" />
+      <label class="filter" for="f-css">CSS</label>
+      <input id="f-ui" type="checkbox" />
+      <label class="filter" for="f-ui">UI/UX</label>
+      <input id="f-ml" type="checkbox" />
+      <label class="filter" for="f-ml">Machine Learning</label>
+    </div>
+    <div class="catalog">
+      <article class="book" data-tags="html css ui">
+        <img alt="Modern HTML &amp; CSS" class="cover" src="https://picsum.photos/seed/book1/800/500" />
+        <div class="body">
+          <h2><a href="book-modern-html-css.html">Modern HTML &amp; CSS</a></h2>
+          <p class="muted">Semantic HTML, modern CSS features, and scalable patterns.</p>
+          <div class="meta">
+            <span class="badge">Beginner</span>
+            <span class="badge">2024</span>
+            <span class="badge">PDF</span>
+          </div>
+        </div>
+      </article>
+      <article class="book" data-tags="css ui">
+        <img alt="Design Systems" class="cover" src="https://picsum.photos/seed/book2/800/500" />
+        <div class="body">
+          <h2><a href="book-design-systems.html">Design Systems</a></h2>
+          <p class="muted">Build consistent, accessible, and scalable UI libraries.</p>
+          <div class="meta">
+            <span class="badge">Intermediate</span>
+            <span class="badge">2023</span>
+            <span class="badge">PDF</span>
+          </div>
+        </div>
+      </article>
+      <article class="book" data-tags="ml ui">
+        <img alt="Practical ML" class="cover" src="https://picsum.photos/seed/book3/800/500" />
+        <div class="body">
+          <h2><a href="book-practical-ml.html">Practical ML</a></h2>
+          <p class="muted">From data prep to evaluation, an end‑to‑end guide.</p>
+          <div class="meta">
+            <span class="badge">Advanced</span>
+            <span class="badge">2022</span>
+            <span class="badge">PDF</span>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <!-- Dynamic catalog from MongoDB (Assignment 4) -->
+    <section class="container my-5" id="db-catalog">
+      <div class="d-flex align-items-end justify-content-between flex-wrap gap-3">
+        <div>
+          <h2 class="mb-1">Database Catalog</h2>
+          <p class="text-secondary mb-0">Books stored in MongoDB (<code>GET /api/books</code>).</p>
+        </div>
+        <div class="d-flex gap-2 flex-wrap">
+          <button id="refreshBooksBtn" class="btn btn-outline-light btn-sm" type="button">Refresh</button>
+
+          <!-- Admin only: add directly from the catalog page -->
+          <button class="btn btn-primary btn-sm" type="button" data-bs-toggle="offcanvas" data-bs-target="#adminOffcanvas" data-admin-only>
+            + Add to catalog
+          </button>
+
+          <!-- Logged out: show Login. Logged in: show Account. -->
+          <a class="btn btn-outline-secondary btn-sm" href="register.html" data-auth-hidden>Login</a>
+          <a class="btn btn-outline-secondary btn-sm" href="account.html" data-auth-only>Account</a>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <div id="booksGrid" class="row g-3"></div>
+        <div id="booksEmpty" class="text-secondary small mt-3" style="display:none;">No books yet. If you are an admin, click “Add to catalog”.</div>
+      </div>
+    </section>
+
+    <!-- Admin offcanvas (only visible for admin users) -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="adminOffcanvas" aria-labelledby="adminOffcanvasLabel" data-admin-only>
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="adminOffcanvasLabel">Admin: Add Authors & Books</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body">
+        <div class="alert alert-info small">Only admins can create new authors and books. Other users will not see this panel.</div>
+
+        <div class="accordion" id="adminAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingAuthor">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAuthor" aria-expanded="true" aria-controls="collapseAuthor">
+                Add author
+              </button>
+            </h2>
+            <div id="collapseAuthor" class="accordion-collapse collapse show" aria-labelledby="headingAuthor" data-bs-parent="#adminAccordion">
+              <div class="accordion-body">
+                <form id="authorCreateForm" class="vstack gap-2">
+                  <div>
+                    <label class="form-label">Full name</label>
+                    <input class="form-control" id="authorNameInline" required />
+                  </div>
+                  <div>
+                    <label class="form-label">Birth year (optional)</label>
+                    <input class="form-control" id="authorYearInline" type="number" />
+                  </div>
+                  <button class="btn btn-primary" type="submit">Save author</button>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingBook">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBook" aria-expanded="false" aria-controls="collapseBook">
+                Add book
+              </button>
+            </h2>
+            <div id="collapseBook" class="accordion-collapse collapse" aria-labelledby="headingBook" data-bs-parent="#adminAccordion">
+              <div class="accordion-body">
+                <form id="bookCreateForm" class="vstack gap-2">
+                  <div>
+                    <label class="form-label">Title</label>
+                    <input class="form-control" id="bookTitleInline" required />
+                  </div>
+                  <div>
+                    <label class="form-label">Year (optional)</label>
+                    <input class="form-control" id="bookYearInline" type="number" />
+                  </div>
+                  <div>
+                    <label class="form-label">Author</label>
+                    <select class="form-select" id="authorSelectInline" required></select>
+                  </div>
+                  <button class="btn btn-success" type="submit">Save book</button>
+                </form>
+                <p class="text-secondary small mt-2 mb-0">Tip: create an author first, then add a book.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Book details modal -->
+    <div class="modal fade" id="bookDetailsModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="bookModalTitle">Book</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="bookModalBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <h3>Online Library</h3>
+          <p class="muted">Read anywhere. Discover new knowledge.</p>
+        </div>
+        <div>
+          <h3>Explore</h3>
+          <p><a href="catalog.html">Catalog</a><br /><a href="membership.html">Membership</a></p>
+        </div>
+        <div>
+          <h3>Company</h3>
+          <p><a href="about.html">About</a><br /><a href="privacy.html">Privacy</a><br /><a href="terms.html">Terms</a>
+          </p>
+        </div>
+        <div>
+          <h3>Contact</h3>
+          <p><a href="faq.html">FAQ</a><br /><a href="contact.html">Contact us</a></p>
+        </div>
+      </div>
+      <p class="muted" style="margin-top:1rem">© 2025 Online Library — Madina Rakhmetulla</p>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <a class="btn btn-primary" href="contact.html" style="position:fixed; right:16px; bottom:16px; z-index:1000">Need
+    help?</a>
+  <script src="js/app.js"></script>
+  <script src="js/library.js"></script>
+</body>
+
+</html>

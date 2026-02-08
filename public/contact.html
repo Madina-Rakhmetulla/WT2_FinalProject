@@ -1,0 +1,95 @@
+<!doctype html>
+<html data-bs-theme="dark" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact — Online Library</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="container navbar">
+        <a class="brand" href="index.html" aria-label="Home">
+          <span class="brand-logo" aria-hidden="true"></span>
+          <span>Online Library</span>
+        </a>
+        <label for="nav-toggle" class="hamb" aria-label="Toggle navigation"><span></span><span></span><span></span></label>
+        <input type="checkbox" id="nav-toggle" aria-hidden="true">
+        <nav class="nav-links" aria-label="Primary">
+          <a href="catalog.html">Catalog</a>
+          <a href="categories.html">Categories</a>
+          <a href="membership.html">Membership</a>
+          <a href="about.html">About</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contact.html">Contact</a>
+          <a href="account.html">Account</a>
+        <span id="navUser" class="badge bg-secondary ms-2" style="align-self:center"></span>
+          <button id="themeToggle" class="btn btn-outline-light btn-sm ms-2" type="button">Light mode</button>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="container">
+
+  <h1>Contact</h1>
+  <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
+    <form class="card" action="#" method="post">
+      <label class="label" for="name">Name</label>
+      <input class="input" id="name" name="name" placeholder="Your name">
+      <label class="label" for="email">Email</label>
+      <input class="input" id="email" name="email" type="email" placeholder="you@example.com">
+      <label class="label" for="msg">Message</label>
+      <textarea class="input" id="msg" name="message" placeholder="How can we help?"></textarea>
+      <p style="margin-top:.8rem"><button class="btn btn-outline-light btn btn-outline-light" type="submit">Send</button> <a class="btn btn-primary" href="faq.html">Read FAQ</a></p>
+      <div class="mt-3 border-top pt-2">
+        <h2 class="card-title">Live Preview</h2>
+        <p class="muted mb-1">Name: <span id="contactPreviewName">—</span></p>
+        <p class="muted mb-0">Email: <span id="contactPreviewEmail">—</span></p>
+        <p class="text-muted mt-2">Values update as you type in the form.</p>
+      </div>
+
+    </form>
+    <div class="card"><div class="card-body"><h2 class="card-title">Support hours</h2>
+      <p class="muted">Mon–Fri 09:00–17:00</p>
+      <h2>Email</h2>
+      <p><a href="#">support@online-library.example</a></p></div></div>
+  </div>
+
+    </main>
+    <footer>
+      <div class="container">
+        <div class="footer-grid">
+          <div>
+            <h3>Online Library</h3>
+            <p class="muted">Read anywhere. Discover new knowledge.</p>
+          </div>
+          <div>
+            <h3>Explore</h3>
+            <p><a href="catalog.html">Catalog</a><br><a href="membership.html">Membership</a></p>
+          </div>
+          <div>
+            <h3>Company</h3>
+            <p><a href="about.html">About</a><br><a href="privacy.html">Privacy</a><br><a href="terms.html">Terms</a></p>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <p><a href="faq.html">FAQ</a><br><a href="contact.html">Contact us</a></p>
+          </div>
+        </div>
+        <p class="muted" style="margin-top:1rem">© 2025 Online Library — Madina Rakhmetulla</p>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+<a href="contact.html" class="btn btn-primary" style="position:fixed; right:16px; bottom:16px; z-index:1000">Need help?</a>
+
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+          integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+          crossorigin="anonymous"></script>
+  <script src="js/app.js"></script>
+  <script src="js/library.js"></script>
+</body>
+</html>
