@@ -3,9 +3,11 @@
 Full-stack web application (Node.js + Express + MongoDB + Vanilla JS frontend).
 
 ## Live Links
-- **Live App:** <PASTE_YOUR_RENDER_URL_HERE>
-- **API Base URL:** <PASTE_YOUR_RENDER_URL_HERE>/api
-
+Live App: https://wt2-finalproject.onrender.com/catalog.html
+Login: https://wt2-finalproject.onrender.com/auth.html
+Profile: https://wt2-finalproject.onrender.com/account.html
+Admin Panel: https://wt2-finalproject.onrender.com/library-admin.html
+API Base: https://wt2-finalproject.onrender.com/api
 ---
 
 ## Tech Stack
