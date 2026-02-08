@@ -56,8 +56,13 @@ package.json
 1) Install dependencies
 ```bash
 npm install
+2.	Create .env from .env.example
+cp .env.example .env
+Fill:
+	•	MONGODB_URI=...
+	•	JWT_SECRET=...
 
-	2.	Run
+3.	Run
 
 npm run dev
 # or
